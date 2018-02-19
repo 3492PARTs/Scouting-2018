@@ -1,0 +1,91 @@
+/**********BEGIN FIELD PAGE**********/
+#mainScout{
+    max-height: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+
+#scout-field{
+    max-width: 100%;
+    min-width: 615px;
+    max-height: 100%;
+    min-height: 517.875px;
+    padding: 1em;
+    box-sizing: border-box;
+    font-size: 1.5em;
+
+    input[type=number]{
+        font-size: 1em;
+        width: 3em;
+    }
+
+    #mode{
+        display: none;
+
+        &:not(:checked) {
+            &~#teleop,
+            ~.teleop{
+                display: none;
+            }
+        }
+
+        &:checked{
+            &~#auto,
+            ~.auto{
+                display: none;
+            }
+        }
+
+        &~#auto,
+        ~#teleop{
+            background-color: rgba(255, 255, 255, .5);
+            position: absolute;
+            padding: .5em;
+            cursor: pointer;
+        }
+    }
+
+    form{
+        padding-bottom: (719/953)*100%;
+        width: 100%;
+        background: url("/static/contents/scout/field.png") no-repeat;
+        background-size: cover;
+        position: relative;
+
+        div{
+            background-color: rgba(255, 255, 255, .5);
+            position: absolute;
+        }
+
+        #move{
+            left: 55%;
+            top: 55%;
+        }
+
+        .cubes{
+            left: 32%;
+            top: 20%;
+        }
+
+        #scale{
+            top: 76%;
+            left: 2%;
+        }
+
+        #hang{
+            top: 48%;
+            left: 10%;
+        }
+
+        .comm{
+            bottom: 0;
+            right: 0;
+        }
+
+        img{
+            width: 100%;
+        }
+    }
+}
+
+/**********END FIELD PAGE**********/

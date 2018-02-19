@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Scouting{% endblock %}
+{% block content %}
+    <main id="scout-index">
+        <div>
+            <div class="scout-btn">
+                <a href="">PIT</a>
+            </div>
+            <br>
+            <div class="scout-btn">
+                <a href="{{ url_for('field') }}">Field</a>
+            </div>
+        </div>
+    </main>
+{% endblock %}

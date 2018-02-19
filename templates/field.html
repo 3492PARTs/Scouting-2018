@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Field{% endblock %}
+{% block content %}
+    <main id="mainScout">
+    <div id="scout-field">
+        <form>
+
+            <input type="checkbox" id="mode">
+            <label for="mode" id="auto">Switch to Teleop</label>
+            <label for="mode" id="teleop">Switch to Auto</label>
+
+            <div class="auto" id="move">
+                <label>Did they move?</label>
+                <br>
+                <input type="radio" name="move-group" id="yes">
+                <label for="yes">Yes</label>
+                <br>
+                <input type="radio" name="move-group" id="no" checked>
+                <label for="no">No</label>
+            </div>
+
+            <div class="auto cubes">
+                <label>Cubes Scored</label>
+                <br>
+                <input type="radio" name="cube" id="zero" checked>
+                <label for="zero">0</label>
+                <br>
+                <input type="radio" name="cube" id="one">
+                <label for="one">1</label>
+                <br>
+                <input type="radio" name="cube" id="two">
+                <label for="two">2</label>
+                <br>
+                <input type="radio" name="cube" id="three">
+                <label for="three">3</label>
+            </div>
+
+            <div class="auto comm">
+                <label for="auto-comm">Comments?</label>
+                <br>
+                <textarea rows="4" cols="50" id="auto-comm"></textarea>
+            </div>
+
+            <div class="teleop cubes">
+                <label for="cube-switch">No. Cubes</label>
+                <br>
+                <input id="cube-switch" type="number" min="0" step="1">
+            </div>
+
+            <div class="teleop" id="hang">
+                <input id="hang" type="checkbox">
+                <label for="hang">Hang?</label>
+            </div>
+
+            <div class="teleop" id="scale">
+                <label for="cube-scale">No. Cubes</label>
+                <br>
+                <input id="cube-scale" type="number" min="0" step="1">
+            </div>
+
+            <div class="teleop comm">
+                <label for="teleop-comm">Comments?</label>
+                <br>
+                <textarea rows="4" cols="50" id="teleop-comm"></textarea>
+                <br>
+                <label for="rating">Rating (1-5)</label>
+                <br>
+                <input type="number" min="0" max="5" step="1">
+            </div>
+        </form>
+        </div>
+    </main>
+{% endblock %}
