@@ -12,11 +12,16 @@
     min-height: 517.875px;
     padding: 1em;
     box-sizing: border-box;
-    font-size: 1.5em;
 
-    input[type=number]{
-        font-size: 1em;
-        width: 3em;
+    label,
+    input,
+    select,
+    textarea{
+        font-size: 1.5em;
+    }
+
+    select{
+        width: 7em;
     }
 
     #mode{
@@ -24,7 +29,8 @@
 
         &:not(:checked) {
             &~#teleop,
-            ~.teleop{
+            ~.teleop,
+            ~input[type=submit]{
                 display: none;
             }
         }
@@ -57,9 +63,28 @@
             position: absolute;
         }
 
+        #username{
+            top: 0;
+            right: 0;
+
+            input{
+                width: 155px;
+                float: right;
+            }
+
+            label{
+                float: left;
+            }
+        }
+
         #move{
-            left: 55%;
-            top: 55%;
+            left: 60%;
+            top: 45%;
+        }
+
+        #auto-scale{
+            left: 2%;
+            top: 60%;
         }
 
         .cubes{
@@ -85,6 +110,18 @@
         img{
             width: 100%;
         }
+
+        input[type=number]{
+            width: 3em;
+        }
+
+
+        input[type=submit]{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
     }
 }
 
