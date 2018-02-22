@@ -31,7 +31,14 @@
                     <a href="{{ url_for('download') }}">Download</a>
                 </div>
                 <div class="scout-btn">
-                    <a href="{{ url_for('field') }}">Wipe</a>
+                    <a href="{{ url_for('wipe') }}" onclick="return confirm('Wipe all data?')">Wipe</a>
+                </div>
+                <div class="scout-btn">
+                    <form enctype="multipart/form-data" method="post" action="{{ url_for('upload') }}">
+                        <label for="upload">Upload: </label>
+                        <input type="file" id="upload" name="upload">
+                        <input type="submit">
+                    </form>
                 </div>
             </div>
         {% endif %}
