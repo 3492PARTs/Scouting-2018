@@ -7,12 +7,30 @@
     background-color: $mainColor;
     display: inline-block;
     margin: 2em;
+    overflow: hidden;
 
     a{
         text-decoration: none;
         font-size: 2em;
         padding: 2em;
         color: white;
+    }
+}
+
+#passwd{
+    background-color: $mainColor;
+    display: inline-block;
+    margin: 2em;
+    padding: 2em;
+
+    label{
+        color: white;
+    }
+
+    label,
+    input,
+    select{
+        font-size: 1.5em;
     }
 }
 

@@ -20,7 +20,7 @@
                     <select id="team-no" name="team-no" required>
                         <option disabled selected value></option>
                         {% for team in teams %}
-                            <option value= "{{ team[0] }}">{{ team[0]|string + " " + team[2]|string }}</option>
+                            <option value= "{{ team[0] }}">{{ team[0]|string + " " + team[1]|string }}</option>
                         {% endfor %}
                     </select>
                 </div>
