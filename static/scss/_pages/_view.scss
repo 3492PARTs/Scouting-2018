@@ -1,0 +1,29 @@
+/**********BEGIN VIEW PAGE**********/
+#scout-view{
+    width: 98%;
+
+    &>#table-wrapper{
+        width: 100%;
+        overflow-x: auto;
+        margin-top: 1em;
+    }
+
+    table{
+        text-align: center;
+        min-width: 100%;
+        border-collapse: collapse;
+        thead tr th,
+        tbody tr td{
+            font-size: 1.5em;
+        }
+        tbody tr:nth-child(even){
+            background-color: darken(white, 20%);
+        }
+        tbody tr:hover{
+            background-color: darken(white, 20%);
+        }
+
+
+    }
+}
+/**********END VIEW PAGE**********/

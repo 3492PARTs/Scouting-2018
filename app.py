@@ -130,7 +130,21 @@ def upload():
             line = csv.readline()
 
         csv.close()
-        return redirect(url_for('index'))
+
+    return redirect(url_for('index'))
+
+@app.route('/view')
+def view():
+    if valid:
+        matches = db.match.select(db.match.team_no, db.match.match_no, db.match.scout, db.match.auto_move,
+                                  db.match.auto_switch_cubes, db.match.auto_scale_cubes,
+                                  db.match.auto_comm, db.match.tele_switch_cubes, db.match.tele_scale_cubes,
+                                  db.match.hang, db.match.tele_comm, db.match.rate).where(db.match.event == event)\
+            .order_by(db.match.team_no.asc(), db.match.match_no.asc()).tuples()
+        matches = list(matches)
+        cols = ['Team', 'Match', 'Scout', 'Move', 'Auto Switch', 'Auto Scale', 'Auto Comm', 'Tele Switch', 'Tele Scale', 'Hang', 'Tele Comm', 'Rate']
+
+        return render_template('view.html', cols=cols, matches=matches)
     else:
         return redirect(url_for('index'))
 

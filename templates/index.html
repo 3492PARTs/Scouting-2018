@@ -20,25 +20,33 @@
             </div>
         {% else %}
             <div>
-                <div class="scout-btn">
-                    <a href="">PIT</a>
+                <div id="scout-type">
+                    <div class="scout-btn">
+                        <a href="">PIT</a>
+                    </div>
+                    <div class="scout-btn">
+                        <a href="{{ url_for('field') }}">Field</a>
+                    </div>
                 </div>
-                <div class="scout-btn">
-                    <a href="{{ url_for('field') }}">Field</a>
+                <div id="data-manip">
+                    <div class="scout-btn">
+                        <a href="{{ url_for('download') }}">Download</a>
+                    </div>
+                    <div class="scout-btn">
+                        <a href="{{ url_for('wipe') }}" onclick="return confirm('Wipe all data?')">Wipe</a>
+                    </div>
+                    <div class="scout-btn">
+                        <form enctype="multipart/form-data" method="post" action="{{ url_for('upload') }}">
+                            <label for="upload">Upload: </label>
+                            <input type="file" id="upload" name="upload">
+                            <input type="submit">
+                        </form>
+                    </div>
                 </div>
-                <br>
-                <div class="scout-btn">
-                    <a href="{{ url_for('download') }}">Download</a>
-                </div>
-                <div class="scout-btn">
-                    <a href="{{ url_for('wipe') }}" onclick="return confirm('Wipe all data?')">Wipe</a>
-                </div>
-                <div class="scout-btn">
-                    <form enctype="multipart/form-data" method="post" action="{{ url_for('upload') }}">
-                        <label for="upload">Upload: </label>
-                        <input type="file" id="upload" name="upload">
-                        <input type="submit">
-                    </form>
+                <div>
+                    <div class="scout-btn">
+                        <a href="{{ url_for('view') }}">View Data</a>
+                    </div>
                 </div>
             </div>
         {% endif %}
