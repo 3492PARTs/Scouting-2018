@@ -191,12 +191,72 @@ def pit_scout():
         print(team)
 
         results = db.pit.select().join(db.event_team_xref, JOIN_INNER,(db.event_team_xref.team_no == team_no) & (db.pit.team_no == db.event_team_xref.team_no) & (db.event_team_xref.event == event))
-        results = list(results.tuples())[0]
+        try:
+            results = list(results.tuples())[0]
+        except IndexError:
+            results = []
+
 
         print(results)
 
 
         return render_template('pit_scout.html', team=team, results=results)
+    else:
+        return redirect(url_for('index'))
+
+
+@app.route('/pit-submit', methods=['POST'])
+def pit_submit():
+    if valid:
+        team_no = request.form.get('team_no')
+        drivetrain = request.form.get('drive-train', "")
+        auto = request.form.get('auto', "")
+        fast = request.form.get('fast', "")
+        pickup = request.form.get('cubes', "")
+        scale = request.form.get('scale', False)
+        switch = request.form.get('switch', False)
+        hang = request.form.get('hang', False)
+        climbpart = request.form.get('climb', "")
+        defense = request.form.get('defense', False)
+
+        if scale:
+            scale = 'y'
+        else:
+            scale = 'n'
+
+        if switch:
+            switch = 'y'
+        else:
+            switch = 'n'
+
+        if hang:
+            hang = 'y'
+        else:
+            hang = 'n'
+
+        if defense:
+            defense = 'y'
+        else:
+            defense = 'n'
+
+        try:
+            pit_res = db.pit.get((db.pit.team_no == team_no) & (db.pit.event == event))
+            pit_res.drivetrain = drivetrain
+            pit_res.auto = auto
+            pit_res.fast = fast
+            pit_res.pickup = pickup
+            pit_res.scale = scale
+            pit_res.switch = switch
+            pit_res.hang = hang
+            pit_res.climbpart = climbpart
+            pit_res.defense = defense
+
+        except DoesNotExist:
+            pit_res = db.pit(team_no = team_no, event_id = event, drivetrain = drivetrain, auto = auto, fast = fast, pickup = pickup, scale = scale, switch = switch, hang = hang, climbpart = climbpart, defense = defense)
+
+        pit_res.save()
+
+        return redirect(url_for('pit'))
     else:
         return redirect(url_for('index'))
 

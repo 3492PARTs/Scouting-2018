@@ -34,7 +34,10 @@ main h4 {
 
 main p,
 main ul>li,
-main ol>li {
+main ol>li,
+main label,
+main textarea,
+main input[type=submit]{
     font-size: 1.5em;
 }
 

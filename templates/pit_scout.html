@@ -8,38 +8,62 @@
         <hr>
 
         <form method="POST" action="{{ url_for('pit_submit') }}">
-            <label for="drive-train">What kind of drive train do you have?</label>
-            <textarea rows="4" cols="25" id="drive-train" name="drive-train">{{ results[3] }}</textarea>
+            <input name="team_no" type="hidden" value="{{ team[0] }}">
+            <div class="form-control-1">
+                <label for="drive-train">What kind of drive train do you have?</label>
+                <br>
+                <textarea rows="4" cols="25" id="drive-train" name="drive-train">{{ results[3] }}</textarea>
+            </div>
 
-            <label for="auto">What can you do in autonomous?</label>
-            <textarea rows="4" cols="25" id="auto" name="auto">{{ results[4] }}</textarea>
+            <div class="form-control-2">
+                <label for="auto">What can you do in autonomous?</label>
+                <br>
+                <textarea rows="4" cols="25" id="auto" name="auto">{{ results[4] }}</textarea>
+            </div>
 
-            <label for="fast">How fast is your robot?</label>
-            <textarea rows="4" cols="25" id="fast" name="fast">{{ results[5] }}</textarea>
+            <div class="form-control-2">
+                <label for="fast">How fast is your robot?</label>
+                <br>
+                <textarea rows="4" cols="25" id="fast" name="fast">{{ results[5] }}</textarea>
+            </div>
 
-            <label for="cubes">How do you pick up cubes?</label>
-            <textarea rows="4" cols="25" id="cubes" name="cubes">{{ results[6] }}</textarea>
+            <div class="form-control-2">
+                <label for="cubes">How do you pick up cubes?</label>
+                <br>
+                <textarea rows="4" cols="25" id="cubes" name="cubes">{{ results[6] }}</textarea>
+            </div>
 
-            <label for="scale">Do you score in scale?</label>
-            <input type="checkbox" id="scale" name="scale" value="{{ results[7] }}">
+            <div class="form-control-2">
+                <label for="scale">Do you score in scale?</label>
+                <input type="checkbox" id="scale" name="scale" {% if results[7] == 'y' %} checked {% endif %}>
+            </div>
 
-            <label for="switch">Do you score in switch?</label>
-            <input type="checkbox" id="switch" name="switch" value="{{ results[8] }}">
+            <div class="form-control-2">
+                <label for="switch">Do you score in switch?</label>
+                <input type="checkbox" id="switch" name="switch" {% if results[8] == 'y' %} checked {% endif %}>
+            </div>
 
-            <label for="hang">Can you hang?</label>
-            <input type="checkbox" id="hang" name="hang" value="{{ results[9] }}">
+            <div class="form-control-2">
+                <label for="hang">Can you hang?</label>
+                <input type="checkbox" id="hang" name="hang" {% if results[9] == 'y' %} checked {% endif %}>
+            </div>
 
-            <label for="climb">How do you climb on bar? / Can others climb on you, how?</label>
-            <textarea rows="4" cols="25" id="climb" name="climb"> {{ results[10] }} </textarea>
+            <div class="form-control-2">
+                <label for="climb">How do you climb on bar? / Can others climb on you, how?</label>
+                <br>
+                <textarea rows="4" cols="25" id="climb" name="climb"> {{ results[10] }} </textarea>
+            </div>
 
-            <label for="defense">Can you play defense?</label>
-            <input type="checkbox" id="defense" name="defense" value="{{ results[11] }}">
+            <div class="form-control-2">
+                <label for="defense">Can you play defense?</label>
+                <input type="checkbox" id="defense" name="defense" {% if results[11] == 'y' %} checked {% endif %}>
+            </div>
 
             <input type="submit">
         </form>
 
         <div class="scout-btn">
-            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('pit') }}">Pit</a>
         </div>
 
 
