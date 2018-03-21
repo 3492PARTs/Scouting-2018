@@ -77,6 +77,9 @@
                     <label for="cube-switch">No. Cubes</label>
                     <br>
                     <input id="cube-switch" name="tele-cube-switch" type="number" min="0" step="1" value="0">
+                    <br>
+                    <input type="button" value="^" onclick="up_sw()">
+                    <input type="button" class="down" value="^" onclick="down_sw()">
                 </div>
 
                 <div class="teleop" id="hang">
@@ -88,6 +91,9 @@
                     <label for="cube-scale">No. Cubes</label>
                     <br>
                     <input id="cube-scale" name="tele-cube-scale" type="number" min="0" step="1" value="0">
+                     <br>
+                    <input type="button" value="^" onclick="up_sc()">
+                    <input type="button" class="down" value="^" onclick="down_sc()">
                 </div>
 
                 <div class="teleop comm">
@@ -106,4 +112,38 @@
             </div>
         </div>
     </main>
+
+    <script>
+
+    function up_sw() {
+        var value = parseInt(document.getElementById('cube-switch').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        document.getElementById('cube-switch').value = value;
+    }
+
+    function down_sw() {
+        var value = parseInt(document.getElementById('cube-switch').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value--;
+        if (value < 0) value = 0;
+        document.getElementById('cube-switch').value = value;
+    }
+
+    function up_sc() {
+        var value = parseInt(document.getElementById('cube-scale').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value++;
+        document.getElementById('cube-scale').value = value;
+    }
+
+    function down_sc() {
+        var value = parseInt(document.getElementById('cube-scale').value, 10);
+        value = isNaN(value) ? 0 : value;
+        value--;
+        if (value < 0) value = 0;
+        document.getElementById('cube-scale').value = value;
+    }
+
+    </script>
 {% endblock %}

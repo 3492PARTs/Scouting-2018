@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Field{% endblock %}
+{% block content %}
+    <main id="mainPit">
+
+        <h1>{{ team[0] ~ " " ~ team[1] }}</h1>
+
+        <hr>
+
+        <form method="POST" action="{{ url_for('pit_submit') }}">
+            <label for="drive-train">What kind of drive train do you have?</label>
+            <textarea rows="4" cols="25" id="drive-train" name="drive-train">{{ results[3] }}</textarea>
+
+            <label for="auto">What can you do in autonomous?</label>
+            <textarea rows="4" cols="25" id="auto" name="auto">{{ results[4] }}</textarea>
+
+            <label for="fast">How fast is your robot?</label>
+            <textarea rows="4" cols="25" id="fast" name="fast">{{ results[5] }}</textarea>
+
+            <label for="cubes">How do you pick up cubes?</label>
+            <textarea rows="4" cols="25" id="cubes" name="cubes">{{ results[6] }}</textarea>
+
+            <label for="scale">Do you score in scale?</label>
+            <input type="checkbox" id="scale" name="scale" value="{{ results[7] }}">
+
+            <label for="switch">Do you score in switch?</label>
+            <input type="checkbox" id="switch" name="switch" value="{{ results[8] }}">
+
+            <label for="hang">Can you hang?</label>
+            <input type="checkbox" id="hang" name="hang" value="{{ results[9] }}">
+
+            <label for="climb">How do you climb on bar? / Can others climb on you, how?</label>
+            <textarea rows="4" cols="25" id="climb" name="climb"> {{ results[10] }} </textarea>
+
+            <label for="defense">Can you play defense?</label>
+            <input type="checkbox" id="defense" name="defense" value="{{ results[11] }}">
+
+            <input type="submit">
+        </form>
+
+        <div class="scout-btn">
+            <a href="{{ url_for('index') }}">Home</a>
+        </div>
+
+
+
+
+    </main>
+
+{% endblock %}

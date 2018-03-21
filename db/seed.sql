@@ -8,7 +8,7 @@ insert into team (team_no,  team_nm) values (234, 'Cyber Blue');
 insert into team (team_no,  team_nm) values (247, 'Da Bears');
 insert into team (team_no,  team_nm) values (279, 'Tech Fusion');
 insert into team (team_no,  team_nm) values (291, 'CIA - Creativity In Action');
-insert into team (team_no,  team_nm) values (304, 'The Bobcats');
+insert into team (team_no,  team_nm) values (304, 'GWHS Robo Griffins');
 insert into team (team_no,  team_nm) values (337, 'Hard Working Hard Hats');
 insert into team (team_no,  team_nm) values (379, 'RoboCats');
 insert into team (team_no,  team_nm) values (451, 'The Cat Attack');
