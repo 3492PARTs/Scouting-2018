@@ -260,12 +260,50 @@ def pit_submit():
     else:
         return redirect(url_for('index'))
 
-@app.route('/pit-view')
+
+@app.route('/pit-view', methods=['GET', 'POST'])
 def pit_view():
     if valid:
-        request.args.get('team_no', None)
+        teams = db.team.select().join(db.event_team_xref, JOIN_INNER,
+                                      (db.team.team_no == db.event_team_xref.team_no) & (
+                                                  db.event_team_xref.event == event)).order_by(
+            db.team.team_no.asc()).tuples()
+        teams = list(teams)
 
-        return render_template('pit.html', todo=todo, done=done)
+        data_with = []
+        data_against = []
+
+        if request.method == 'POST':
+            team_one = request.form.get('team-one', None)
+            team_two = request.form.get('team-two', None)
+            team_three = request.form.get('team-three', None)
+
+            team_wone = request.form.get('team-wone', None)
+            team_wtwo = request.form.get('team-wtwo', None)
+
+
+            if team_one is not None:
+                team_one = db.pit.select(db.pit.team_no, db.pit.drivetrain, db.pit.auto, db.pit.fast, db.pit.pickup, db.pit.scale, db.pit.switch, db.pit.hang, db.pit.climbpart, db.pit.defense, db.team.team_nm).where((db.pit.team_no == team_one) & (db.pit.event == event)).join(db.team, JOIN_INNER, db.team.team_no == db.pit.team_no)
+                print(list(team_one.tuples()))
+                data_against.append(list(team_one.tuples())[0])
+            if team_two is not None:
+                team_two = db.pit.select(db.pit.team_no, db.pit.drivetrain, db.pit.auto, db.pit.fast, db.pit.pickup, db.pit.scale, db.pit.switch, db.pit.hang, db.pit.climbpart, db.pit.defense, db.team.team_nm).where((db.pit.team_no == team_two) & (db.pit.event == event)).join(db.team, JOIN_INNER, db.team.team_no == db.pit.team_no)
+                data_against.append(list(team_two.tuples())[0])
+            if team_three is not None:
+                team_three = db.pit.select(db.pit.team_no, db.pit.drivetrain, db.pit.auto, db.pit.fast, db.pit.pickup, db.pit.scale, db.pit.switch, db.pit.hang, db.pit.climbpart, db.pit.defense, db.team.team_nm).where((db.pit.team_no == team_three) & (db.pit.event == event)).join(db.team, JOIN_INNER, db.team.team_no == db.pit.team_no)
+                data_against.append(list(team_three.tuples())[0])
+
+            if team_wone is not None:
+                team_wone = db.pit.select(db.pit.team_no, db.pit.drivetrain, db.pit.auto, db.pit.fast, db.pit.pickup, db.pit.scale, db.pit.switch, db.pit.hang, db.pit.climbpart, db.pit.defense, db.team.team_nm).where((db.pit.team_no == team_wone) & (db.pit.event == event)).join(db.team, JOIN_INNER, db.team.team_no == db.pit.team_no)
+                data_with.append(list(team_one.tuples())[0])
+            if team_wtwo is not None:
+                team_wtwo = db.pit.select(db.pit.team_no, db.pit.drivetrain, db.pit.auto, db.pit.fast, db.pit.pickup, db.pit.scale, db.pit.switch, db.pit.hang, db.pit.climbpart, db.pit.defense, db.team.team_nm).where((db.pit.team_no == team_wtwo) & (db.pit.event == event)).join(db.team, JOIN_INNER, db.team.team_no == db.pit.team_no)
+                data_with.append(list(team_one.tuples())[0])
+
+            print(data_against)
+            print(data_with)
+
+        return render_template('pit_view.html', teams=teams, data_against=data_against, data_with=data_with)
     else:
         return redirect(url_for('index'))
 
